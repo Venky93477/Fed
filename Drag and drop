@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container{
+                width:250px;
+                height:150px;
+                padding: 10px;
+                border:2px solid green;
+            }
+        </style>
+        <script>
+            function allowDrop(ev){
+                ev.preventDefault();
+            }
+            function drag(ev){
+                ev.dataTransfer.setData("text/html",ev.target.id);
+            }
+            function drop(ev){
+                ev.preventDefault();
+                var data=ev.dataTransfer.getData("text/html");
+                ev.target.appendchild(document.getElementById(data));
+            }
+        </script>
+        </head>
+        <body>
+            <p>Drap and vvit logo into rec</p>
+            <div id="div1" class="container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <img id="drag" src="/home/3-cse-b/Downloads/vvit.png" alt="vvit.logo"
+            draggable="true" ondragstart="drag(event)"/>
+
+        </body>
+        </html>
